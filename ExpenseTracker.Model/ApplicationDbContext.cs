@@ -32,6 +32,8 @@ namespace ExpenseTracker.Model
 
 
         public DbSet<TransactionTypeModel> TransactionTypes { get; set; }
+        public DbSet<CategoryModel> Category { get; set; }
+        public DbSet<TransactionModel> Transactions { get; set; }
 
 
 
