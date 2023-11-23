@@ -1,4 +1,6 @@
 using ExpenseTracker.Model;
+using ExpenseTracker.Repository.IRepository;
+using ExpenseTracker.Repository.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -11,8 +13,12 @@ ConfigurationManager configuration = builder.Configuration;
 // For Entity Framework
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultServer")));
 
+//AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 
+//Dependency
+builder.Services.AddScoped<IRepoTransactionType, RepoTransactionType>();
 
 
 builder.Services.AddControllers();
