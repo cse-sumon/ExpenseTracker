@@ -19,6 +19,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 
 //Dependency
 builder.Services.AddScoped<IRepoTransactionType, RepoTransactionType>();
+builder.Services.AddScoped<IRepoCategory, RepoCategory>();
 
 
 builder.Services.AddControllers();

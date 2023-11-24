@@ -9,6 +9,7 @@ namespace ExpenseTrackerAPI.Helper
         public MappingProfile()
         {
             CreateMap<TransactionTypeModel, TransactionTypeViewModel>().ReverseMap();
+            CreateMap<CategoryModel, CategoryViewModel>().ReverseMap();
         }
     }
 }

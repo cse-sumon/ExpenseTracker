@@ -18,7 +18,7 @@ namespace ExpenseTracker.Model
         [Required]
         public int CategoryId { get; set; }
         public string Title { get; set; }
-        public string Desciption { get; set; }
+        public string? Desciption { get; set; }
 
         [Required]
         [Precision(18, 2)]
