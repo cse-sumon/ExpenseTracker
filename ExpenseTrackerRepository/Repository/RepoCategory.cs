@@ -33,6 +33,7 @@ namespace ExpenseTracker.Repository.Repository
                                           select new CategoryViewModel
                                           {
                                               Id = c.Id,
+                                              Name = c.Name,
                                               TransactionTypeId = c.TransactionTypeId,
                                               TransactionType = t.Name,
                                               Description = c.Description,
@@ -56,6 +57,7 @@ namespace ExpenseTracker.Repository.Repository
                                 select new CategoryViewModel
                                 {
                                     Id = c.Id,
+                                    Name = c.Name,
                                     TransactionTypeId = c.TransactionTypeId,
                                     TransactionType = t.Name,
                                     Description = c.Description,

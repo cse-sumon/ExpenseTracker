@@ -11,11 +11,14 @@ namespace ExpenseTrackerAPI.Controllers
     {
         private readonly IRepoCategory _repoCategory;
         private readonly IWebHostEnvironment _environment;
+        private readonly ILogger<CategoryController> _logger;
 
-        public CategoryController(IRepoCategory repoCategory, IWebHostEnvironment environment)
+        public CategoryController(IRepoCategory repoCategory, IWebHostEnvironment environment, ILogger<CategoryController> logger)
         {
             _repoCategory = repoCategory;
             _environment = environment;
+            _logger = logger;
+
         }
 
 
@@ -24,6 +27,7 @@ namespace ExpenseTrackerAPI.Controllers
         {
             try
             {
+                _logger.LogInformation("Get Category calling 2222....");
                 return Ok(await _repoCategory.GetCategories());
             }
             catch (Exception)
@@ -70,7 +74,12 @@ namespace ExpenseTrackerAPI.Controllers
 
                     var type = model.TransactionTypeId == 1 ? "Income" : "Expense";
 
-                    var fileName = $"{type}_{model.Name}";
+                    var ex = Path.GetExtension(model.File.FileName);
+
+                    var fileName = $"{type}_{model.Name}{ex}";
+
+                    fileName = fileName.Replace(" ", "_");
+
                     var filePath = Path.Combine(uploadsFolder, fileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
@@ -125,7 +134,12 @@ namespace ExpenseTrackerAPI.Controllers
 
                     var type = model.TransactionTypeId == 1 ? "Income" : "Expense";
 
-                    var fileName = $"{type}_{model.Name}";
+                    var ex = Path.GetExtension(model.File.FileName);
+
+                    var fileName = $"{type}_{model.Name}{ex}";
+
+                    fileName = fileName.Replace(" ", "_");
+
                     var filePath = Path.Combine(uploadsFolder, fileName);
 
                     using (var stream = new FileStream(filePath, FileMode.Create))
