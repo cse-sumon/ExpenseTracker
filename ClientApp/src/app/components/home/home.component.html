@@ -1,0 +1,25 @@
+<p>
+    <mat-toolbar>
+        <span>Expense Tracker</span>
+    </mat-toolbar>
+</p>
+
+<div class="main-body">
+    <div class="row">
+
+        <div class="col-2 left-sidebar">
+            <mat-list>
+                <mat-list-item routerLink="">Home</mat-list-item>
+                <mat-list-item routerLink="category">Category</mat-list-item>
+                <mat-list-item routerLink="transaction">Transaction</mat-list-item>
+            </mat-list>
+
+        </div>
+
+        <div class="col-10 right-sidebar">
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+
+</div>

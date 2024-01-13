@@ -3,23 +3,56 @@ import { BrowserModule, provideClientHydration } from '@angular/platform-browser
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CategoryComponent } from './category/category.component';
-import { TransactionComponent } from './transaction/transaction.component';
-import { HomeComponent } from './home/home.component';
+
+import { HomeComponent } from './components/home/home.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material/material.module';
+import { HttpClientModule } from '@angular/common/http';
+
+import { TransactionService } from './shared/transaction.service';
+import { CategoryService } from './shared/category.service';
+import { PrimengModule } from './primeng/primeng.module';
+import { FormsModule } from '@angular/forms';
+import { CategoryComponent } from './components/category/category.component';
+import { TransactionComponent } from './components/transaction/transaction.component';
+import { AddCategoryComponent } from './components/category/add-category/add-category.component';
+import { AddTransactionComponent } from './components/transaction/add-transaction/add-transaction.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomeComponent,
     CategoryComponent,
     TransactionComponent,
-    HomeComponent
+    AddCategoryComponent,
+    AddTransactionComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule,
+    HttpClientModule,
+    PrimengModule,
+    FormsModule,
+    ReactiveFormsModule
+
+    // ToastrModule.forRoot({
+    //   progressBar: true,
+    //   timeOut: 2000,
+    //   preventDuplicates: true,
+    // }),
+
+ 
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    TransactionService,
+    CategoryService,
+    TransactionService
   ],
   bootstrap: [AppComponent]
 })
