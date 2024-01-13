@@ -21,6 +21,6 @@ namespace ExpenseTracker.Model
 
         public string? Icon { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public DateOnly CreationDate { get; set; }
     }
 }

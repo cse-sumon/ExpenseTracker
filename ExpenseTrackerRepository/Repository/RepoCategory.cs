@@ -52,7 +52,6 @@ namespace ExpenseTracker.Repository.Repository
             
             var result = await (from c in _context.Category
                                 .Where(t => t.Id == id)
-                                .AsNoTracking()
                                 join t in _context.TransactionTypes on c.TransactionTypeId equals t.Id
                                 select new CategoryViewModel
                                 {
@@ -63,7 +62,7 @@ namespace ExpenseTracker.Repository.Repository
                                     Description = c.Description,
                                     Icon = c.Icon,
                                     CreationDate = c.CreationDate,
-                                }).FirstOrDefaultAsync();
+                                }).AsNoTracking().FirstOrDefaultAsync();
 
             return _mapper.Map<CategoryViewModel>(result);
         }

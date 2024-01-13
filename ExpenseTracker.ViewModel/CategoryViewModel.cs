@@ -17,15 +17,15 @@ namespace ExpenseTracker.ViewModel
 
         public string? TransactionType { get; set; }
 
-        [Required]
-        public string Name { get; set; }
+       
+        public string? Name { get; set; }
 
         public string? Description { get; set; }
 
         public string? Icon { get; set; }
 
-        public IFormFile File { get; set; }
+        public IFormFile? File { get; set; }
 
-        public DateTime CreationDate { get; set; }
+        public DateOnly? CreationDate { get; set; }
     }
 }

@@ -56,7 +56,7 @@ namespace ExpenseTrackerAPI.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> CreateEmployee(CategoryViewModel model)
+        public async Task<ActionResult> CreateCategory([FromBody]CategoryViewModel model)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace ExpenseTrackerAPI.Controllers
                 }
 
 
-                model.CreationDate = DateTime.Now;
+                model.CreationDate = DateOnly.FromDateTime(DateTime.Now);
                 await _repoCategory.AddCategory(model);
 
                 return Ok();
@@ -105,7 +105,7 @@ namespace ExpenseTrackerAPI.Controllers
 
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult> UpdateCategory(int id, CategoryViewModel model)
+        public async Task<ActionResult> UpdateCategory(int id, [FromBody] CategoryViewModel model)
         {
             try
             {
@@ -170,7 +170,7 @@ namespace ExpenseTrackerAPI.Controllers
 
 
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult> DeleteEmployee(int id)
+        public async Task<ActionResult> DeleteCategory(int id)
         {
             try
             {
