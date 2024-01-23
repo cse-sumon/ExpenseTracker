@@ -67,6 +67,29 @@ namespace ExpenseTracker.Repository.Repository
             return _mapper.Map<CategoryViewModel>(result);
         }
 
+
+        public async Task<IEnumerable<CategoryViewModel>> GetCategoryByTransactionTypeId(int id)
+        {
+            // var result = await _context.Category.AsNoTracking().FirstOrDefaultAsync(x => x.Id == id);
+
+            var result = await (from c in _context.Category
+                                .Where(t => t.TransactionTypeId == id)
+                                join t in _context.TransactionTypes on c.TransactionTypeId equals t.Id
+                                select new CategoryViewModel
+                                {
+                                    Id = c.Id,
+                                    Name = c.Name,
+                                    TransactionTypeId = c.TransactionTypeId,
+                                    TransactionType = t.Name,
+                                    Description = c.Description,
+                                    Icon = c.Icon,
+                                    CreationDate = c.CreationDate,
+                                }).AsNoTracking().ToListAsync();
+
+            return _mapper.Map<IEnumerable<CategoryViewModel>>(result);
+        }
+
+
         public async Task AddCategory(CategoryViewModel model)
         {
             var result = _mapper.Map<CategoryModel>(model);

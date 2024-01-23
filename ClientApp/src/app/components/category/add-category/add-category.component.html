@@ -9,7 +9,7 @@
 
             <input type="hidden" class="form-control" id="id" formControlName="id">
 
-            <label for="transactionTypeId" class="form-label">Transaction Type ID</label>
+            <label for="transactionTypeId" class="form-label">Transaction Type</label>
             <select id="transactionTypeId" class="form-select" formControlName="transactionTypeId">
                 <option value="" disabled>Select Transaction Type</option>
                 <option *ngFor="let transactionType of transactionTypeList" [value]="transactionType.id">

@@ -1,1 +1,68 @@
-<p>add-transaction works!</p>
+
+
+    
+
+<div class="formbody" style="padding: 10px;">
+    <h2 style="color:blue">{{tranService.formTitle}} </h2><hr>
+    <form [formGroup]="tranService.transactionForm" (ngSubmit)="onSubmit()" class="mt-4">
+        <div class="mb-2">
+
+            <input type="hidden" class="form-control" id="id" formControlName="id">
+
+            <label for="transactionTypeId" class="form-label">Transaction Type</label>
+            <select id="transactionTypeId" class="form-select" formControlName="transactionTypeId" (change)="onTransactionTypeChange()">
+                <option value="" disabled>Select Transaction Type</option>
+                <option *ngFor="let transactionType of transactionTypeList" [value]="transactionType.id">
+                    {{ transactionType.name }}
+                </option>
+            </select>
+            <div *ngIf="tranService.transactionForm.get('transactionTypeId')!.hasError('required')" class="text-danger">
+                Transaction Type is required
+            </div>
+        </div>
+
+        <div class="mb-2">
+            <label for="categoryId" class="form-label">Category</label>
+            <select id="categoryId" class="form-select" formControlName="categoryId">
+                <option value="" disabled>Select Category</option>
+                <option *ngFor="let category of categoryList" [value]="category.id">
+                    {{ category.name }}
+                </option>
+            </select>
+            <div *ngIf="tranService.transactionForm.get('category')!.hasError('required')" class="text-danger">
+                Category is required
+            </div>
+        </div>
+    
+        <div class="mb-3">
+            <label for="title" class="form-label">title</label>
+            <input type="text" class="form-control" id="title" formControlName="title">
+            <div *ngIf="tranService.transactionForm.get('title')!.hasError('required')" class="text-danger">
+                Title is required
+            </div>
+        </div>
+
+        
+        <div class="mb-3">
+            <label for="amount" class="form-label">amount</label>
+            <input type="number" class="form-control" id="title" formControlName="amount">
+            <div *ngIf="tranService.transactionForm.get('amount')!.hasError('required')" class="text-danger">
+                Amount is required
+            </div>
+        </div>
+
+        
+    
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea class="form-control" id="description" formControlName="description"></textarea>
+        </div>
+    
+        <div class="col-12 d-flex justify-content-end">
+        <button class="btn btn-warning mt me-2" type="reset" (click)="onClose()">Cancel</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!tranService.transactionForm.valid">{{tranService.buttonName}}</button>
+        </div>
+    </form>
+    
+</div>
+  

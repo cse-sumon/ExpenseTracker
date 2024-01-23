@@ -6,6 +6,8 @@ import { Category } from '../../model/category';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddTransactionComponent } from './add-transaction/add-transaction.component';
 
 @Component({
   selector: 'app-transaction',
@@ -28,7 +30,10 @@ export class TransactionComponent {
 
 
 
-  constructor(public tranService: TransactionService, private snackbar: SanckbarService){}
+  constructor(public tranService: TransactionService, private snackbar: SanckbarService,public dialog: MatDialog,)
+  {
+
+  }
 
 
 
@@ -63,6 +68,68 @@ applyFilter(event: Event) {
     this.dataSource.paginator.firstPage();
   }
 }
+
+
+
+AddNewDialog(): void {
+
+  this.tranService.formTitle = "Add New Transaction"
+  this.tranService.buttonName = "Save"
+
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "540px";
+  dialogConfig.height = "615px";
+  const dialogRef = this.dialog.open(AddTransactionComponent, dialogConfig);
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.ngOnInit()
+  });
+
+}
+
+
+  
+onEdit(transaction:any){
+  // console.log(transaction);
+  this.tranService.formPopulate(transaction);
+
+  this.tranService.formTitle = "Update Transaction"
+  this.tranService.buttonName = "Update"
+
+  const dialogConfig = new MatDialogConfig();
+  dialogConfig.disableClose = true;
+  dialogConfig.autoFocus = true;
+  dialogConfig.width = "540px";
+  dialogConfig.height = "615px";
+  const dialogRef = this.dialog.open(AddTransactionComponent, dialogConfig);
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    this.ngOnInit()
+  });
+}
+
+
+
+
+onDelete(id:number){
+  this.tranService.deleteTransaction(id).subscribe(
+    res=>{
+      this.snackbar.openSnackbar("Transaction Deleted Successfully");
+      this.ngOnInit();
+      // console.log(res);
+    },
+    err=>{
+      console.log(err);
+    }
+  )
+}
+
+
+
 
 
 }

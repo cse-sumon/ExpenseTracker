@@ -32,7 +32,7 @@ namespace ExpenseTracker.Repository.Repository
                                 {
                                     Id = t.Id,
                                     Title = t.Title,
-                                    Desciption = t.Desciption,
+                                    Description = t.Description,
                                     Amount = t.Amount,
                                     CreationDate = t.CreationDate,
                                     TransactionTypeId = t.TransactionTypeId,
@@ -55,7 +55,7 @@ namespace ExpenseTracker.Repository.Repository
                                {
                                    Id = t.Id,
                                    Title = t.Title,
-                                   Desciption = t.Desciption,
+                                   Description = t.Description,
                                    Amount = t.Amount,
                                    CreationDate = t.CreationDate,
                                    TransactionTypeId = t.TransactionTypeId,
@@ -79,7 +79,7 @@ namespace ExpenseTracker.Repository.Repository
                                 {
                                     Id = t.Id,
                                     Title = t.Title,
-                                    Desciption = t.Desciption,
+                                    Description = t.Description,
                                     Amount = t.Amount,
                                     CreationDate = t.CreationDate,
                                     TransactionTypeId = t.TransactionTypeId,

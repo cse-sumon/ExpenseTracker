@@ -21,13 +21,12 @@ namespace ExpenseTracker.Model
      
         public string Title { get; set; }
 
-        public string? Desciption { get; set; }
+        public string? Description { get; set; }
 
         [Required]
         [Precision(18, 2)]
         public decimal Amount { get; set; }
 
-        [Required]
-        public DateTime CreationDate { get; set; }
+        public DateOnly CreationDate { get; set; }
     }
 }

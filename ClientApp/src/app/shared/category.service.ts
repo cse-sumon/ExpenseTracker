@@ -37,6 +37,10 @@ export class CategoryService {
     return this.http.get(this.apiURL+"Category/"+id);
   }
 
+  getCategoryByTransactionTypeId(id:number){
+    return this.http.get(this.apiURL+"Category/GetCategoryByTransactionTypeId/"+id);
+  }
+
   addCategory(model:any){
     return this.http.post(this.apiURL+"Category",model);
   }

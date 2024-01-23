@@ -74,14 +74,14 @@ namespace ExpenseTrackerAPI.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AddTransaction(TransactionViewModel model)
+        public async Task<IActionResult> AddTransaction([FromBody]TransactionViewModel model)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                model.CreationDate = DateTime.Now;
+                model.CreationDate = DateOnly.FromDateTime(DateTime.Now);
                 await _repoTransaction.AddTransaction(model);
 
                 return Ok();
@@ -95,7 +95,7 @@ namespace ExpenseTrackerAPI.Controllers
 
 
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateTransaction(int id, TransactionViewModel model)
+        public async Task<IActionResult> UpdateTransaction(int id, [FromBody]TransactionViewModel model)
         {
             try
             {

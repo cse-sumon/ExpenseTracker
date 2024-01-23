@@ -54,6 +54,24 @@ namespace ExpenseTrackerAPI.Controllers
             }
         }
 
+        [HttpGet("GetCategoryByTransactionTypeId/{id:int}")]
+        public async Task<IActionResult> GetCategoryByTransactionTypeId(int id)
+        {
+            try
+            {
+                var result = await _repoCategory.GetCategoryByTransactionTypeId(id);
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
 
         [HttpPost]
         public async Task<ActionResult> CreateCategory([FromBody]CategoryViewModel model)

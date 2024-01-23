@@ -13,6 +13,8 @@ namespace ExpenseTracker.Repository.IRepository
 
         Task<CategoryViewModel> GetCategory(int id);
 
+        Task<IEnumerable<CategoryViewModel>> GetCategoryByTransactionTypeId(int id);
+
         Task AddCategory(CategoryViewModel model);
 
         Task UpdateCategory(CategoryViewModel model);
