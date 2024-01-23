@@ -18,6 +18,7 @@ import { TransactionComponent } from './components/transaction/transaction.compo
 import { AddCategoryComponent } from './components/category/add-category/add-category.component';
 import { AddTransactionComponent } from './components/transaction/add-transaction/add-transaction.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CategoryComponent,
     TransactionComponent,
     AddCategoryComponent,
-    AddTransactionComponent
+    AddTransactionComponent,
+    DashboardComponent
 
   ],
   imports: [
