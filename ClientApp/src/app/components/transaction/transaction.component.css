@@ -1,0 +1,40 @@
+table {
+    width: 100%;
+  }
+  
+  .mat-mdc-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+  
+  td, th {
+    width: 18%;
+  }
+  th{
+    background-color: rgb(183, 235, 176) !important;
+    
+  }
+  
+  tr.mat-mdc-header-row{
+    height: 40px !important;
+  }
+  
+  .mat-mdc-row{
+    height: 35px !important;
+    background-color: rgb(255, 255, 255);
+  }
+  
+  .mat-mdc-row:nth-child(even){
+    background-color: rgb(243, 251, 253);
+  }
+  
+  .action-cell .action-buttons {
+    display: flex;
+  }
+  
+  .action-cell button {
+    margin-right: 5px; /* Optional: Add margin between buttons */
+  }
+  
+  
+  
